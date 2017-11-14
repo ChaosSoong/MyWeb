@@ -3,39 +3,36 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - MyWeb</title>
     <meta name="description" content="mall" />
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <style>
+        header ul li {
+            float: right;
+            line-height: 60px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("MyWeb", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
+    <div id="header">
+        <header style="background-color:deepskyblue;height:60px;width:100%">
+            <ul style="list-style:none;">
+                <li><a href="#">前台用户</a></li>
+                <li><a href="#">管理端用户</a></li>
+                <li><a href="#">商品管理</a></li>
+                <li><a href="#">订单管理</a></li>
+                <li><a href="#">其他</a></li>
+            </ul>
+        </header>
     </div>
-
-    <div class="container body-content">
+    <div id="content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - MyWeb</p>
+    </div>
+    <div id="footer">
+        <footer style="position:absolute;bottom:0;width:100%;height:50px;text-align:center;background-color:aqua;line-height:50px">
+            <p>&copy; 1992 - @DateTime.Now.Year - MyWeb</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

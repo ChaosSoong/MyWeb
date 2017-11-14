@@ -49,7 +49,7 @@ namespace Common
             if (checkCode == null || checkCode.Trim() == String.Empty)
                 return null;
 
-            Bitmap image = new Bitmap(122, 32);
+            Bitmap image = new Bitmap(100, 28);
             Graphics g = Graphics.FromImage(image);
             checkCode = string.Join(" ", Regex.Matches(checkCode, ".").Cast<Match>().ToList());
             try
@@ -71,7 +71,7 @@ namespace Common
                     g.DrawLine(new Pen(Color.Silver), x1, y1, x2, y2);
                 }
 
-                Font font = new Font("Arial", 16, (System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic));
+                Font font = new Font("Arial", 16, (FontStyle.Bold | FontStyle.Italic));
                 System.Drawing.Drawing2D.LinearGradientBrush brush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, image.Width, image.Height), ColorTranslator.FromHtml("#41707C"), ColorTranslator.FromHtml("#41707C"), 1.4f, true);
                 g.DrawString(checkCode, font, brush, 4, 4);
 

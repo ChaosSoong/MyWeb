@@ -1,4 +1,5 @@
-﻿using Filter;
+﻿using Common;
+using Filter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,28 @@ namespace MyWebAPI.Controllers
         public ActionResult Index(FormCollection form) {
             string user = form["username"].ToString();
             string pwd = Common.StringFilter.getSHA1Code(form["password"].ToString());
-            int count = db.SysUser.Where(m => m.name == user && m.pwd == pwd).ToList().Count();
-            if (count > 0)
-            {
-                return Redirect(Url.Content("~/Product/Index" + ""));
+            string validate = form["validate"].ToString().ToUpper();
+            string validateSession = Session["ValidateStr"].ToString();
+            if (validate != validateSession) {
+                return Content("<script>alert('验证码错误');history.go(-1);</script>");
             }
-            else {
-                return Content("null");
+            else{
+                int count = db.SysUser.Where(m => m.name == user && m.pwd == pwd).ToList().Count();
+                if (count > 0)
+                {
+                    return Redirect(Url.Content("~/Product/Index" + ""));
+                }
+                else
+                {
+                    return Content("<script>alert('账号或密码错误');history.go(-1);</script>");
+                }
             }
         }
         public ActionResult Validator()
         {
             try
             {
-                Common.Validator vali = new Common.Validator();
+                Validator vali = new Validator();
                 string code = vali.GenerateCheckCode(5);
                 Session["ValidateStr"] = code;
                 byte[] imgstream = vali.CreateCheckCodeImage(code);
@@ -41,6 +50,7 @@ namespace MyWebAPI.Controllers
             }
             catch (Exception ex)
             {
+                Logger.ErrorLog(ex, new Dictionary<string, string>() { { "Function", "LoginController.Validator()[HttpGet]" } });
                 return Content("<script>alert('下载过程出现错误，请联系管理员');history.go(-1);</script>");
             }
         }

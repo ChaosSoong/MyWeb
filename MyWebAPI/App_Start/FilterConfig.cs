@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Filter;
+using System.Web;
 using System.Web.Mvc;
 
 namespace MyWebAPI
@@ -7,7 +8,8 @@ namespace MyWebAPI
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute());//mvc用的拦截器
+            filters.Add(new SystemAutherFilter());
         }
     }
 }

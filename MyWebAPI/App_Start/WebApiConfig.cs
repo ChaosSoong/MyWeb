@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -20,6 +21,7 @@ namespace MyWebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Filters.Add(new ApiFilter());//webapi 添加全局过滤器
         }
     }
 }
