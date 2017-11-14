@@ -14,5 +14,20 @@
     执行当前 Web 请求期间生成了未经处理的异常。可以使用下面的异常堆栈跟踪信息确定有关异常原因和发生位置的信息。`
 [解决问题](http://blog.csdn.net/jurson99/article/details/43764617) 
 
-2. config.EnableCors(new EnableCorsAttribute("*","*","*"));//跨域支持代码,包Microsoft.AspNet.WebApi.Cors  
+2. config.EnableCors(new EnableCorsAttribute("*","*","*"));//跨域支持代码,包Microsoft.AspNet.WebApi.Cors 
+EnableCorsAttribute的构造函数指定的三个参数均为*，表示支持所有的访问。第一个参数表示访问的源；第二个参数表示访问的头信息；第三个参数表示允许的方法，比如：HEAD、OPTIONS、DELETE、GET、POST等等。 
 3. GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();//返回JSON格式数据
+4. git提交的时候报错：fatal: TaskCanceledException encountered.身份验证输入用户名和密码就ok
+
+## 2017/11/13
+1. 关于拦截器Filter
+mvc 的filter继承System.Web.Mvc.ActionFilterAttribute
+添加全局过滤器：FilterConfig文件filters.Add(new YourFilter());
+webapi 的filter继承System.Web.Http.Filters.ActionFilterAttribute
+添加全局过滤器：WebApiConfig文件config.Filters.Add(new YourFilter());
+2. 关于控制器Controller
+因为有两个网站用户端和管理端，用户端继承ApiController，管理端继承Controller，所以在Controller文件夹下建立两个目录，分别存放两种Controller
+
+## 2017/11/14
+1. vuejs的axios网络传输和vuex的状态管理简单使用
+2. 登陆跳转首页
