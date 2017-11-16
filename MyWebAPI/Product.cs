@@ -12,12 +12,11 @@ namespace MyWebAPI
     using System;
     using System.Collections.Generic;
     
-    public partial class SysUser
+    public partial class Product
     {
         public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public Nullable<System.DateTime> createTime { get; set; }
-        public string realName { get; set; }
+        public string name { get; set; }
+        public Nullable<int> type { get; set; }
+        public Nullable<decimal> price { get; set; }
     }
 }

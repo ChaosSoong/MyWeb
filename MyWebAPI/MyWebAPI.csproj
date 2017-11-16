@@ -148,6 +148,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Webdiyer.MvcPager, Version=3.0.2015.802, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Webdiyer.MvcPager.3.0.1.1\lib\Webdiyer.MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
@@ -174,24 +178,24 @@
     <Content Include="Content\css\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="myMall.Context.tt">
+    <Content Include="MyWebEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>myMall.edmx</DependentUpon>
-      <LastGenOutput>myMall.Context.cs</LastGenOutput>
+      <DependentUpon>MyWebEntities.edmx</DependentUpon>
+      <LastGenOutput>MyWebEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="myMall.tt">
+    <Content Include="MyWebEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>myMall.edmx</DependentUpon>
-      <LastGenOutput>myMall.cs</LastGenOutput>
+      <DependentUpon>MyWebEntities.edmx</DependentUpon>
+      <LastGenOutput>MyWebEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="myMall.edmx">
+    <EntityDeploy Include="MyWebEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>myMall.Designer.cs</LastGenOutput>
+      <LastGenOutput>MyWebEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="myMall.edmx.diagram">
-      <DependentUpon>myMall.edmx</DependentUpon>
+    <Content Include="MyWebEntities.edmx.diagram">
+      <DependentUpon>MyWebEntities.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\MyWebAPI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -216,30 +220,33 @@
     <Compile Include="Controllers\api\UserController.cs" />
     <Compile Include="Controllers\manage\ProductController.cs" />
     <Compile Include="FrontUser.cs">
-      <DependentUpon>myMall.tt</DependentUpon>
+      <DependentUpon>MyWebEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs" />
-    <Compile Include="myMall.Context.cs">
+    <Compile Include="MyWebEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>myMall.Context.tt</DependentUpon>
+      <DependentUpon>MyWebEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="myMall.cs">
+    <Compile Include="MyWebEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>myMall.tt</DependentUpon>
+      <DependentUpon>MyWebEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="myMall.Designer.cs">
+    <Compile Include="MyWebEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>myMall.edmx</DependentUpon>
+      <DependentUpon>MyWebEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>MyWebEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SysUser.cs">
-      <DependentUpon>myMall.tt</DependentUpon>
+      <DependentUpon>MyWebEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

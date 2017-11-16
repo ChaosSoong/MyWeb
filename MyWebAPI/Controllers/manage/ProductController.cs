@@ -8,6 +8,7 @@ namespace MyWebAPI.Controllers.manage
 {
     public class ProductController : Controller
     {
+        WebEntities db = new WebEntities();
         // GET: Product
         public ActionResult Index()
         {

@@ -12,16 +12,16 @@ namespace MyWebAPI.Controllers
     [SystemAutherFilter]
     public class ProductController : ApiController
     {
-        MyWebEntities db = new MyWebEntities();
+        WebEntities db = new WebEntities();
         [HttpGet]
-        public List<SysUser> getAllProducts() {
-            List<SysUser> list = db.SysUser.ToList();
+        public List<Product> getAllProducts() {
+            List<Product> list = db.Product.ToList();
             return list;
         }
         [HttpGet]
         public Product getProduct(string id) {
             Product p = new Product();
-            p.id = "1";
+            p.id = 1;
             p.name = "chao";
             p.price = 25;
             return p;

@@ -12,14 +12,14 @@ namespace MyWebAPI.Controllers
     [SystemAutherFilter]
     public class UserController : Controller
     {
-        MyWebEntities db = new MyWebEntities();
+        WebEntities db = new WebEntities();
         #region 后台用户管理
-        public ActionResult addSysUser(string id)
+        public ActionResult addSysUser(int id)
         {
             SysUser user = new SysUser();
             user.id = id;
-            user.name = "song";
-            user.pwd = "123456o-0";
+            user.username = "song";
+            user.password = "123456o-0";
             db.SysUser.Add(user);
             db.SaveChanges();
             return Content("add ok");
@@ -29,7 +29,7 @@ namespace MyWebAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult delSysUser(string id)
+        public ActionResult delSysUser(int id)
         {
             SysUser user = new SysUser() { id = id };
             db.SysUser.Attach(user);
@@ -37,6 +37,10 @@ namespace MyWebAPI.Controllers
             db.SaveChanges();
             return Content("del ok");
         }
+        #endregion
+
+        #region 前端用户管理
+
         #endregion
     }
 }

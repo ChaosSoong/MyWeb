@@ -21,7 +21,7 @@ margin-left:-200px;margin-top:-100px;background-color: #20b4af}
             <label for="username">用户：</label><input type="text" name="username" value="" id="username" placeholder="请输入用户名" /><br>
             <label for="password">密码：</label><input type="password" name="password" value="" id="password" placeholder="请输入密码" /><br>
             <label for="validate">验证码：</label><input type="text" name="validate" value="" id="validate" /><img src="@Url.Content("~/Login/Validator")" onclick="this.src='@Url.Content("~/Login/Validator/id=")'+(new Date()).getTime()" title="看不清，换一张" />
-            <input type="submit" name="" id="" value="登 录" />
+            <input type="submit" name="" id="" value="登 录" /><input type="reset" value="重置" id=""/>
         </div>
     }
 </body>

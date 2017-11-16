@@ -31,3 +31,30 @@ webapi 的filter继承System.Web.Http.Filters.ActionFilterAttribute
 ## 2017/11/14
 1. vuejs的axios网络传输和vuex的状态管理简单使用
 2. 登陆跳转首页
+
+## 2017/11/15
+1. 解决问题：`无法删除数据库 "MyWeb"，因为该数据库当前正在使用`
+        use master    
+        go   
+             
+        declare @dbname sysname    
+        set @dbname = 'MyWeb' --这个是要删除的数据库库名    
+             
+        declare @s nvarchar(1000)    
+        declare tb cursor local   
+        for  
+            select s = 'kill   ' + cast(spid as varchar)  
+            from   master.dbo.sysprocesses  
+            where  dbid = DB_ID(@dbname)    
+             
+        open   tb      
+        fetch   next   from   tb   into   @s    
+        while @@fetch_status = 0  
+        begin  
+            exec (@s)   
+            fetch next from tb into @s  
+        end    
+        close   tb    
+        deallocate   tb        
+        exec ('drop   database   [' + @dbname + ']')
+这个原理类似于操作系统里面通过pid干掉程序了

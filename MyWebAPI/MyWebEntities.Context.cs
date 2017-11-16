@@ -13,10 +13,10 @@ namespace MyWebAPI
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MyWebEntities : DbContext
+    public partial class WebEntities : DbContext
     {
-        public MyWebEntities()
-            : base("name=MyWebEntities")
+        public WebEntities()
+            : base("name=WebEntities")
         {
         }
     
@@ -25,7 +25,8 @@ namespace MyWebAPI
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<SysUser> SysUser { get; set; }
         public virtual DbSet<FrontUser> FrontUser { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<SysUser> SysUser { get; set; }
     }
 }

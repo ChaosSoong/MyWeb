@@ -11,7 +11,7 @@ namespace MyWebAPI.Controllers
     [SystemAutherFilter]
     public class LoginController : Controller
     {
-        MyWebEntities db = new MyWebEntities();
+        WebEntities db = new WebEntities();
         // GET: Login
         public ActionResult Index()
         {
@@ -20,14 +20,14 @@ namespace MyWebAPI.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection form) {
             string user = form["username"].ToString();
-            string pwd = Common.StringFilter.getSHA1Code(form["password"].ToString());
+            string pwd = StringFilter.getSHA1Code(form["password"].ToString());
             string validate = form["validate"].ToString().ToUpper();
             string validateSession = Session["ValidateStr"].ToString();
             if (validate != validateSession) {
                 return Content("<script>alert('验证码错误');history.go(-1);</script>");
             }
             else{
-                int count = db.SysUser.Where(m => m.name == user && m.pwd == pwd).ToList().Count();
+                int count = db.SysUser.Where(m => m.username == user && m.password == pwd).ToList().Count();
                 if (count > 0)
                 {
                     return Redirect(Url.Content("~/Product/Index" + ""));

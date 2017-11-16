@@ -14,10 +14,10 @@ namespace MyWebAPI
     
     public partial class FrontUser
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string pwd { get; set; }
+        public int id { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
         public Nullable<System.DateTime> createTime { get; set; }
-        public string nickname { get; set; }
+        public string realName { get; set; }
     }
 }
